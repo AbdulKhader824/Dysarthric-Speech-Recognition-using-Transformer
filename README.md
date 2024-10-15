@@ -39,6 +39,11 @@ We utilize a **Transformer-based architecture** for speech-to-text conversion. T
 - Greedy decoding for inference.
 - Supports dysarthric speech, which requires handling complex speech patterns.
 
+The following diagram shows the architecture of our Transformer-based model for dysarthric speech recognition:
+
+![Model Architecture](images/transformer (1).png)
+
+
 ## Installation
 
 To get started, follow these steps:
