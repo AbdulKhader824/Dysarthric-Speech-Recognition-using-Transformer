@@ -41,7 +41,7 @@ We utilize a **Transformer-based architecture** for speech-to-text conversion. T
 
 The following diagram shows the architecture of our Transformer-based model for dysarthric speech recognition:
 
-![Model Architecture](images/transformer (1).png)
+![Model Architecture](images/transformer.png)
 
 
 ## Installation
