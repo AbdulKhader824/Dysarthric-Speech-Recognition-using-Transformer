@@ -1,55 +1,60 @@
 # Dysarthric Speech Recognition using Transformer
 
-This project is focused on building a **Dysarthric Speech Recognition System** using a Transformer-based model. The system is designed to process and recognize speech patterns specifically for dysarthric speakers, who have motor speech disorders that affect articulation and speech intelligibility.
+This project focuses on building a speech recognition model for dysarthric speakers using a transformer-based architecture. The model is initially trained on a general dataset (LJ Speech) and then fine-tuned using control speakers' data to adapt it for recognizing speech from dysarthric patients.
 
 ## Table of Contents
-
-- [Project Overview](#project-overview)
-- [Dataset](#dataset)
+- [Introduction](#introduction)
 - [Model Architecture](#model-architecture)
+- [Dataset](#dataset)
+- [Training Process](#training-process)
+- [Results](#results)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Directory Structure](#directory-structure)
-- [Training and Evaluation](#training-and-evaluation)
-- [Results](#results)
-- [References](#references)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Project Overview
+## Introduction
+Dysarthria is a speech disorder resulting from neurological damage, leading to difficulties in speech articulation. This project aims to develop a speech recognition system to assist patients with dysarthria by improving automatic speech-to-text conversion.
 
-Dysarthria is a motor speech disorder resulting from neurological injury that leads to poor speech intelligibility. In this project, we aim to develop an automatic speech recognition (ASR) system that can help transcribe dysarthric speech using a Transformer-based model.
+The model is based on transformer architectures, which have proven effective in various NLP and speech recognition tasks.
 
-This project uses the **UASpeech dataset** and focuses on transforming the input audio signals to text while dealing with the irregularities in the speech patterns of dysarthric individuals.
+## Model Architecture
+The model uses a transformer-based encoder-decoder architecture. Below is a visual representation of the architecture:
+
+![Model Architecture](images/transformer.png)
+*(Include a diagram of your model architecture here)*
 
 ## Dataset
 
-We use the [UASpeech dataset](https://www.isca-speech.org/archive/Interspeech_2008/papers/i08_1741.pdf), which contains speech samples from dysarthric speakers. This dataset is essential for training models that can handle non-standard speech patterns.
+### LJ Speech Dataset
+The model was initially trained using the **LJ Speech Dataset**, which contains general speech samples. This dataset provides a good foundation for the model, enabling it to learn general speech patterns and characteristics.
 
-- **Source Directory**: `D:\Mtechs3\project\UASpeech_original_FM\UASpeech\audio\original\M10`
-- **Test Set**: A random 20% split of the dataset is used for testing.
+### Control Speakers Dataset
+After training on the LJ Speech dataset, the model was fine-tuned with **Control Speakers Data**. The control speakers are used as a bridge to help the model adjust from normal speech to dysarthric speech, preparing it for the final stage of training with dysarthric patients.
 
-You will need to have access to this dataset to train and evaluate the model.
+### Dysarthric Speech Data
+The final training stage focuses on speech data collected from dysarthric patients. This helps the model adapt and specialize in recognizing speech patterns commonly associated with dysarthria.
 
-## Model Architecture
+## Training Process
+The training process consists of two major stages:
 
-We utilize a **Transformer-based architecture** for speech-to-text conversion. The model consists of an encoder to process the audio features and a decoder for character-level prediction.
+1. **Initial Training with LJ Speech**:
+   - The model was first trained on the LJ Speech dataset to learn general speech patterns.
+   - This dataset helps the model develop a broad understanding of speech features, which is later useful for adaptation.
 
-### Key Features:
-- Character-level embeddings for speech recognition.
-- Transformer layers for capturing long-range dependencies in speech.
-- Greedy decoding for inference.
-- Supports dysarthric speech, which requires handling complex speech patterns.
+2. **Fine-tuning with Control Speakers**:
+   - After the initial training, the pre-trained model was loaded, and further training was conducted using the control speakers’ dataset.
+   - This allows the model to adapt to the more specialized data, bridging the gap between general and dysarthric speech.
 
-The following diagram shows the architecture of our Transformer-based model for dysarthric speech recognition:
+3. **Training with Dysarthric Speech** (Final Stage):
+   - The model was then fine-tuned with dysarthric patients' speech data to specialize in recognizing the specific speech difficulties faced by these patients.
 
-![Model Architecture](images/transformer.png)
-
+## Results
+The model's performance has improved over time by gradually adapting from general speech to more complex dysarthric speech patterns. The final model shows significant improvements in recognizing dysarthric speech compared to traditional methods.
 
 ## Installation
+To install and run the project, follow these steps:
 
-To get started, follow these steps:
-
-1. **Clone the repository**:
+1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/dysarthric-speech-recognition.git
-   cd dysarthric-speech-recognition
-
